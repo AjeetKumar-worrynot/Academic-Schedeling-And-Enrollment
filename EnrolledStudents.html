@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic</title>
+    <script type="text/javascript" src="myscript.js"></script>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif; /* Elegant serif font for a classic look */
+            background-color: #f5f5f5; /* Softer light gray background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #34495e;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Table Container - Ensures scrollable table */
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* Allows horizontal scrolling */
+            position: sticky;
+            top: 0;
+            z-index: 10; /* Keeps it above other content */
+            margin-top: 50px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #fff;
+            border-radius: 10px; /* Rounded corners for the table */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            border: 1px solid #2980b9; /* Elegant blue border */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 18px 25px;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1rem;
+            font-weight: normal;
+            color: #333;
+        }
+
+        th {
+            background-color: #1f3a61; /* Deep blue for header */
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+        }
+
+        td {
+            background-color: #f8f8f8; /* Light gray background for rows */
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1; /* Alternating light rows */
+        }
+
+        tr:hover td {
+            background: linear-gradient(to right, #8e44ad, #3498db); /* Gradient effect on hover */
+            color: white; /* White text on hover */
+            transition: background 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        tr:last-child td {
+            border-bottom: none; /* Remove the border from the last row */
+        }
+
+        /* Smooth scroll for mobile devices */
+        @media (max-width: 768px) {
+            table {
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 2.2rem; /* Adjust header font size for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Enrolled Students</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email ID</th>
+                    <th>Course Name</th>
+                </tr>
+            </thead>
+            <tbody id="Students"></tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            showStudent(); // Assuming showStudent() will populate the table dynamically
+        };
+    </script>
+</body>
+</html>
