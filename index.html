@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Registration System</title>
+    <title>Academia Connect</title>
     <style>
         /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #1a1a2e, #16213e);
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -23,88 +24,188 @@
             min-height: 100vh;
             text-align: center;
             padding: 20px;
+            overflow-x: hidden;
+            transition: background 0.5s ease-in-out;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background: linear-gradient(to right, #0b0c10, #1f2833);
+            color: #fff;
+        }
+
+       /* Dark Mode Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2d0609;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.toggle-btn:hover {
+    background: #180f0d;
+    transform: scale(1.1);
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    .toggle-btn {
+        top: 10px;
+        right: 10px;
+        padding: 10px 14px;
+        font-size: 1rem;  /* Adjust size of text */
+    }
+}
+
+
+        /* Header Section */
+        .header {
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            font-size: 2.8rem;
+            animation: slideIn 1s ease-in-out;
         }
 
+        p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Button Container */
         .button-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
+            padding: 20px;
+            margin-top: 30px;
         }
 
         a {
             text-decoration: none;
-            flex: 1;
-            min-width: 120px;
         }
 
         button {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1.2rem;
+            width: 180px;
+            padding: 15px;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
             border: none;
             border-radius: 8px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
-            transform: translateY(-5px);
+            transform: scale(1.1);
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
         }
 
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 50px;
         }
 
+        .feature {
+            flex: 1;
+            min-width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            button {
-                font-size: 1rem;
-                padding: 12px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            button {
-                font-size: 0.9rem;
-                padding: 10px 12px;
-            }
+            h1 { font-size: 2.4rem; }
+            p { font-size: 1rem; }
+            .features { flex-direction: column; align-items: center; }
+            button { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <h1>Course Registration System</h1>
-    <div class="button-container">
-        <a href="EnrolledStudents.html">
-            <button>Enrolled Students</button>
-        </a>
-        <a href="Availablecourses.html">
-            <button>Available Courses</button>
-        </a>
-        <a href="Register.html">
-            <button>Register a Course</button>
-        </a>
+
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+    <div class="header">
+        <h1>Welcome to Academia Connect</h1>
+        <p>Register for your favorite courses effortlessly.</p>
     </div>
+
+    <div class="button-container">
+        <a href="EnrolledStudents.html"><button>Enrolled Students</button></a>
+        <a href="Availablecourses.html"><button>Available Courses</button></a>
+        <a href="Register.html"><button>Register a Course</button></a>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+
 </body>
 </html>
